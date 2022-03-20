@@ -1,0 +1,19 @@
+#header {
+  height: 400px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0065a8;
+  background-image: url("https://www.transparenttextures.com/patterns/diagmonds.png");
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+
+}
+
+#profile-image {
+
+  width: 180px;
+  padding-bottom: 0;
+  padding-top: 80px;
+  margin: 5px;
+}

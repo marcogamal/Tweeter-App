@@ -10,6 +10,7 @@ nav {
   padding-right: 1.5em;
   padding-top: 1.5em;
   justify-content: flex-start;
+  position: fixed;
 }
 
 /* Write a new tweet nav on the right */
