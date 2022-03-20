@@ -1,0 +1,31 @@
+main {
+  padding: 20px;
+}
+
+footer {
+  margin-top: 10px;
+  font-family: "Bungee";
+  /* display: flex;
+  justify-content: space-between;
+  align-content: flex-end; */
+}
+
+#tweet-button {
+
+  background-color: #4056a1;
+  color: #FFFFFF;
+}
+
+section form {
+  height: 200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.counter {
+  margin-top: -30px;
+  display: flex;
+  justify-content:flex-end
+}
