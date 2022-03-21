@@ -1,5 +1,6 @@
 main {
   padding: 20px;
+  width: 100%;
 }
 
 footer {
@@ -28,4 +29,8 @@ section form {
   margin-top: -30px;
   display: flex;
   justify-content:flex-end
+}
+
+.red-count {
+  color: red;
 }
