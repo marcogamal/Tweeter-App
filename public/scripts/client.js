@@ -53,7 +53,7 @@ const createTweetElement = (tweet) => {
     </p>
     <div class="tweet-line"></div>
     <footer>
-    <p class="footer-days-counter">10 days ago</p>
+    <p class="footer-days-counter">${timeago.format(tweet.created_at)}</p>
     <ul class="icons">
       <li><i class="fa-solid fa-flag"></i></li>
       <li><i class="fa-solid fa-retweet"></i></li>
@@ -67,3 +67,35 @@ const createTweetElement = (tweet) => {
 };
 
 renderTweets(data);
+
+$("#submit-tweet").submit(function (event) {
+  event.preventDefault();
+
+  const data = $(this).serialize();
+
+  $.ajax({
+    url: "http://localhost:8080/tweets",
+    type: "POST",
+    data: data,
+    success: function (data) {
+      console.log(data);
+    },
+    error: function (err) {
+      console.log(err);
+    },
+  });
+});
+
+const loadTweets = () => {
+  $.ajax({
+    url: "/tweets",
+    type: "GET",
+    success: function (data) {
+      renderTweets(data);
+    },
+    error: function (err) {
+      return err;
+    },
+  });
+};
+loadTweets();
