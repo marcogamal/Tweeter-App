@@ -30,15 +30,22 @@ const data = [
   },
 ];
 
-const renderTweets = function (tweets) {
-  for (const key in tweets) {
-    let $tweet = createTweetElement(tweets[key]);
-    $("#tweets-cointainer").append($tweet);
-  }
-};
+$(document).ready(function () {
+  const escape = function (str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
+  const renderTweets = function (tweets) {
+    $("#tweets-container").empty();
+    for (const key in tweets) {
+      let $tweet = createTweetElement(tweets[key]);
+      $("#tweets-cointainer").prepend($tweet);
+    }
+  };
 
-const createTweetElement = (tweet) => {
-  let $tweet = `
+  const createTweetElement = (tweet) => {
+    let $tweet = `
   <article>
   <div class="container-for-tweets">
     <header>
@@ -49,7 +56,7 @@ const createTweetElement = (tweet) => {
       <p class="username">${tweet.user.handle}</p>
     </header>
     <p class="tweet-content">
-      ${tweet.content.text}
+      ${escape(tweet.content.text)}
     </p>
     <div class="tweet-line"></div>
     <footer>
@@ -63,41 +70,51 @@ const createTweetElement = (tweet) => {
   </div> 
 </article>
  `;
-  return $tweet;
-};
+    return $tweet;
+  };
 
-renderTweets(data);
+  renderTweets(data);
 
-$("#submit-tweet").submit(function (event) {
-  event.preventDefault();
+  const loadTweets = () => {
+    $.ajax({
+      url: "/tweets",
+      type: "GET",
+      success: function (data) {
+        renderTweets(data);
+      },
+      error: function (err) {
+        return err;
+      },
+    });
+  };
+  loadTweets();
 
-  const data = $(this).serialize();
-  if (data === "" || data === null || data.length > 140) {
-    return alert("Error 404: Tweet can not be submitted");
-  }
-  $.ajax({
-    url: "http://localhost:8080/tweets",
-    type: "POST",
-    data: data,
-    success: function (data) {
-      console.log(data);
-    },
-    error: function (err) {
-      return err;
-    },
+  $("#submit-tweet").submit(function (event) {
+    event.preventDefault();
+
+    const serializedData = $(this).serialize();
+    const tweetLength = $("#tweet-text").val().length;
+    const exceedCharacter = `<p> <i class="fa-solid fa-exclamation"></i> Your tweet can not exceed the 140 characters limit </p>`;
+    const emptyCharacter = `<p> <i class="fa-solid fa-exclamation"></i> Your tweet can not be empty </p>`;
+
+    const warning = function (addClass) {
+      $("#warning").slideUp(600, function () {
+        $("#warning").empty();
+        $("#warning").append(addClass);
+      });
+      $("#warning").slideDown(1000);
+    };
+    if (tweetLength > 140) {
+      warning(exceedCharacter);
+    } else if ($("#tweet-text").val() === "") {
+      warning(emptyCharacter);
+    } else {
+      $.post("/tweets", serializedData, function (data) {
+        $("#tweet-text").val("").empty();
+        $("#tweet-count").val(140);
+        $("#warning").slideUp();
+        loadTweets();
+      });
+    }
   });
 });
-
-const loadTweets = () => {
-  $.ajax({
-    url: "/tweets",
-    type: "GET",
-    success: function (data) {
-      renderTweets(data);
-    },
-    error: function (err) {
-      return err;
-    },
-  });
-};
-loadTweets();

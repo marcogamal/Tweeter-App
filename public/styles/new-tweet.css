@@ -90,3 +90,8 @@ article footer {
 .icons :hover {
   color: #faa302;
 }
+
+#warning {
+  color: red;
+  padding: 20px
+}
