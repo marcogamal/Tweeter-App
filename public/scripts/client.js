@@ -72,7 +72,9 @@ $("#submit-tweet").submit(function (event) {
   event.preventDefault();
 
   const data = $(this).serialize();
-
+  if (data === "" || data === null || data.length > 140) {
+    return alert("Error 404: Tweet can not be submitted");
+  }
   $.ajax({
     url: "http://localhost:8080/tweets",
     type: "POST",
@@ -81,7 +83,7 @@ $("#submit-tweet").submit(function (event) {
       console.log(data);
     },
     error: function (err) {
-      console.log(err);
+      return err;
     },
   });
 });
