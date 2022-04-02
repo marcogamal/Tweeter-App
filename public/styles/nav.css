@@ -3,7 +3,7 @@ nav {
   height: 120px;
   width: 100%;
   background-color: #4056a1;
-  color: #FFFFFF;
+  color: #ffffff;
   font-family: "Bungee", cursive;
   padding-left: 1.5em;
   padding-right: 1.5em;
@@ -17,7 +17,7 @@ nav {
 #right-nav {
   margin-left: auto;
   font-family: "Source Sans Pro", sans-serif;
-  margin-bottom: 10px;
+  margin-bottom: 00px;
   display: flex;
   flex-direction: column;
 }
@@ -25,15 +25,13 @@ nav {
 #left-nav {
   margin-bottom: 20px;
   font-size: 40px;
-  margin-top: 40px;
+  margin-top: 10px;
 }
 
 @media only screen and (max-width: 768px) {
   nav {
-    flex-direction: column;
     padding-bottom: 10px;
     margin: auto 0;
-    height: 180px;
   }
   #warning p {
     font-size: 1.8rem;

@@ -58,7 +58,7 @@ $(document).ready(function () {
     <p class="tweet-content">
       ${escape(tweet.content.text)}
     </p>
-    <div class="tweet-border"></div>
+    <div class="tweet-line"></div>
     <footer>
 <p class="footer-days-counter">${timeago.format(tweet.created_at)}</p>
     <ul class="icons">
@@ -73,7 +73,6 @@ $(document).ready(function () {
     return $tweet;
   };
 
-  
   const loadTweets = function () {
     $.ajax({
       url: "/tweets",
@@ -93,8 +92,8 @@ $(document).ready(function () {
 
     const serializedData = $(this).serialize();
     const tweetLength = $("#tweet-text").val().length;
-    const exceedCharacter = `<p> <i class="fa-solid fa-exclamation"></i> Your tweet can not exceed the 140 characters limit </p>`;
-    const emptyCharacter = `<p> <i class="fa-solid fa-exclamation"></i> Your tweet can not be empty </p>`;
+    const exceedCharacter = `<p> <i class="fa-solid fa-circle-exclamation"></i> Your tweet can not exceed the 140 characters limit! </p>`;
+    const emptyCharacter = `<p> <i class="fa-solid fa-circle-exclamation"></i> Your tweet can not be empty! </p>`;
 
     const warning = function (addClass) {
       $("#warning").slideUp(600, function () {

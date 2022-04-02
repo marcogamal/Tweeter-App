@@ -29,11 +29,6 @@ section form {
   align-content: center;
 }
 
-.counter {
-  display: flex;
-  justify-content: flex-end;
-}
-
 .red-count {
   color: red;
 }
