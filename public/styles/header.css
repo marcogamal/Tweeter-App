@@ -1,4 +1,4 @@
-#header {
+#body-header {
   height: 400px;
   padding-top: 130px;
   width: 100%;
@@ -11,7 +11,6 @@
 }
 
 #profile-image {
-
   width: 180px;
   padding-top: 80px;
 }

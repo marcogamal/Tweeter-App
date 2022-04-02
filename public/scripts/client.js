@@ -40,7 +40,7 @@ $(document).ready(function () {
     $("#tweets-container").empty();
     for (const key in tweets) {
       let $tweet = createTweetElement(tweets[key]);
-      $("#tweets-cointainer").prepend($tweet);
+      $("#tweets-container").prepend($tweet);
     }
   };
 
@@ -58,24 +58,23 @@ $(document).ready(function () {
     <p class="tweet-content">
       ${escape(tweet.content.text)}
     </p>
-    <div class="tweet-line"></div>
+    <div class="tweet-border"></div>
     <footer>
-    <p class="footer-days-counter">${timeago.format(tweet.created_at)}</p>
+<p class="footer-days-counter">${timeago.format(tweet.created_at)}</p>
     <ul class="icons">
       <li><i class="fa-solid fa-flag"></i></li>
       <li><i class="fa-solid fa-retweet"></i></li>
       <li><i class="fa-solid fa-heart"></i></li>
-    </ul>
-  </footer>
+      </ul>
+    </footer>
   </div> 
 </article>
- `;
+  `;
     return $tweet;
   };
 
-  renderTweets(data);
-
-  const loadTweets = () => {
+  
+  const loadTweets = function () {
     $.ajax({
       url: "/tweets",
       type: "GET",
