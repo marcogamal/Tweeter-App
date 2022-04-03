@@ -17,12 +17,16 @@ Tweeter is a simple, single-page Twitter clone.
 - Express
 - Node 5.10.x or above
 - Body Parser
-- MD5
 - Chance
 - Timeago
 
-## Dev
-
 ## Screenshots
+
+Screenshot of the Tweeter page
 !["Screenshot of the Tweeter page"](https://github.com/marcogamal/Tweeter-App/blob/master/docs/Tweeter-Page.PNG)
+
+Screenshot of the Error when submitting more than 140 characters
+!["Screenshot of the Error when submitting more than 140 characters"](https://github.com/marcogamal/Tweeter-App/blob/master/docs/Tweeter-Error.PNG)
+
+Screenshot of the smaller window or mobile device
 !["Screenshot of the smaller window or mobile device"](https://github.com/marcogamal/Tweeter-App/blob/master/docs/Tweeter-Scroll.PNG)
